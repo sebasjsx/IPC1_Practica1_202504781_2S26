@@ -31,6 +31,7 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
+                    tablero.ingresarVehiculo(entrada);
                     break;
 
                 case 2:
