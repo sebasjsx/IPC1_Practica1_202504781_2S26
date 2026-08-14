@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ipc1.practica1;
+import java.util.Random;
 
 /**
  *
@@ -45,6 +46,30 @@ public class Tablero {
             }
 
             System.out.println();
+        }
+    }
+
+    public void colocarEntradaSalida() {
+        colocarEnBorde("E");
+        colocarEnBorde("S");
+    }
+
+    private void colocarEnBorde(String letra) {
+
+        Random aleatorio = new Random();
+        boolean colocado = false;
+
+        while (colocado == false) {
+
+            int fila = aleatorio.nextInt(10);
+            int columna = aleatorio.nextInt(10);
+
+            boolean esquina = (fila == 0 || fila == 9) && (columna == 0 || columna == 9);
+
+            if (tablero[fila][columna].equals("=") && esquina == false) {
+                tablero[fila][columna] = letra;
+                colocado = true;
+            }
         }
     }
 }

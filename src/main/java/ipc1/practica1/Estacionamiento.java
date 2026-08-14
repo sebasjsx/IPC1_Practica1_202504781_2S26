@@ -15,6 +15,7 @@ public class Estacionamiento {
         Menu menu = new Menu();
 
         tablero.llenarTablero();
+        tablero.colocarEntradaSalida();
         menu.mostrarMenu(tablero);
     }
 }
