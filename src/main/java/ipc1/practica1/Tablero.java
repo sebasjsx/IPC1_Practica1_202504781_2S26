@@ -111,10 +111,12 @@ public class Tablero {
             System.out.print("Ingrese el monto entregado: Q");
             monto = entrada.nextDouble();
 
-            if (monto < 10) {
-                System.err.println("Dinero insuficiente");
+            if (monto < 0) {
+                System.out.println("No se puede un monto negativo");
+            } else if (monto < 10) {
+                System.out.println("Monto insuficiente");
             }
-        } while (monto < 0);
+        } while (monto < 10);
         double cambio = monto - 10;
         System.out.println("Cambio: Q." + cambio);
 
@@ -164,7 +166,7 @@ public class Tablero {
         if (posicion != null) {
 
             int fila = posicion[0];
-            
+
             int columna = posicion[1];
 
             tablero[fila][columna] = "L";
