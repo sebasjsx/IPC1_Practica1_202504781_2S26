@@ -121,4 +121,11 @@ public class Tablero {
         ingresos = ingresos + 10;
         contadorVehiculos++;
     }
+    
+    public void mostrarIngresos(){
+        System.out.println("=== INGRESOS ===");
+        System.out.println("Vehiculos cobrados: " + contadorVehiculos);
+        System.out.println("Ingresos totales: " + ingresos);
+        
+    }
 }

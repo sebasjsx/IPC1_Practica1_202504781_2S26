@@ -48,6 +48,7 @@ public class Menu {
                     break;
 
                 case 6:
+                    tablero.mostrarIngresos();
                     break;
 
                 case 7:
