@@ -15,6 +15,8 @@ public class Tablero {
 
     private String[][] tablero = new String[10][10];
     private String[][] placas = new String[10][10];
+    private double ingresos = 0;
+    private int contadorVehiculos = 0;
 
     public void llenarTablero() {
         for (int fila = 0; fila < 10; fila++) {
@@ -86,7 +88,8 @@ public class Tablero {
         int columna = entrada.nextInt();
 
         if (fila >= 1 && fila <= 8 && columna >= 1 && columna <= 8) {
-
+            realizarPago(entrada);
+            
             if (tablero[fila][columna].equals("L")) {
                 tablero[fila][columna] = "A";
                 placas[fila][columna] = placa;
@@ -98,5 +101,24 @@ public class Tablero {
         } else {
             System.out.println("La fila y columna deben estar entre 1 y 8");
         }
+    }
+    
+    public void realizarPago(Scanner entrada){
+        double monto;
+        
+        do {            
+           System.out.println("Tarifa Q10 todo el dia!");
+            System.out.print("Ingrese el monto entregado: Q");
+            monto = entrada.nextDouble();
+            
+            if(monto<10) {
+                System.err.println("Dinero insuficiente");
+            }
+        } while (monto < 0 );
+        double cambio = monto-10;
+        System.out.println("Cambio: Q." + cambio);
+        
+        ingresos = ingresos + 10;
+        contadorVehiculos++;
     }
 }
