@@ -35,6 +35,7 @@ public class Menu {
                     break;
 
                 case 2:
+                    tablero.retirarVehiculo(entrada);
                     break;
 
                 case 3:
@@ -42,6 +43,7 @@ public class Menu {
                     break;
 
                 case 4:
+                    tablero.buscarVehiculo(entrada);
                     break;
 
                 case 5:
