@@ -8,6 +8,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
-        <exec.mainClass>ipc1.practica1.IPC1_Practica1_202504781_2S26</exec.mainClass>
+        <exec.mainClass>ipc1.practica1.Estacionamiento</exec.mainClass>
     </properties>
 </project>
