@@ -17,7 +17,7 @@ public class Menu {
         int opcion;
 
         do {
-            System.out.println("\n===== SISTEMA DE ESTACIONAMIENTO =====");
+            System.out.println("===== SISTEMA DE ESTACIONAMIENTO =====");
             System.out.println("1. Ingresar vehiculo");
             System.out.println("2. Retirar vehiculo");
             System.out.println("3. Mostrar estacionamiento");
@@ -30,34 +30,21 @@ public class Menu {
             opcion = entrada.nextInt();
 
             switch (opcion) {
-                case 1:
-                    tablero.ingresarVehiculo(entrada);
-                    break;
+                case 1 -> tablero.ingresarVehiculo(entrada);
 
-                case 2:
-                    tablero.retirarVehiculo(entrada);
-                    break;
+                case 2 -> tablero.retirarVehiculo(entrada);
 
-                case 3:
-                    tablero.mostrarTablero();
-                    break;
+                case 3 -> tablero.mostrarTablero();
 
-                case 4:
-                    tablero.buscarVehiculo(entrada);
-                    break;
+                case 4 -> tablero.buscarVehiculo(entrada);
 
-                case 5:
-                    break;
+                case 5 -> {}
 
-                case 6:
-                    tablero.mostrarIngresos();
-                    break;
+                case 6 -> tablero.mostrarIngresos();
 
-                case 7:
-                    break;
+                case 7 -> {}
 
-                default:
-                    System.out.println("Opcion incorrecta");
+                default -> System.out.println("Opcion incorrecta");
             }
 
         } while (opcion != 7);
