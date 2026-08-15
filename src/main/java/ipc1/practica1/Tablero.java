@@ -15,6 +15,7 @@ public class Tablero {
 
     private String[][] tablero = new String[10][10];
     private String[][] placas = new String[10][10];
+    private Validaciones validaciones = new Validaciones();
     private double ingresos = 0;
     private int contadorVehiculos = 0;
 
@@ -82,6 +83,9 @@ public class Tablero {
 
         System.out.print("Ingrese la placa: ");
         String placa = entrada.next();
+        if (validaciones.validarFormatoPlaca(placa) == false) {
+            return;
+        }
         System.out.print("Ingrese la fila: ");
         int fila = entrada.nextInt();
         System.out.print("Ingrese la columna: ");
@@ -134,6 +138,9 @@ public class Tablero {
 
         System.out.print("Ingrese la placa: ");
         String placa = entrada.next();
+        if (validaciones.validarFormatoPlaca(placa) == false) {
+            return null;
+        }
 
         for (int fila = 1; fila <= 8; fila++) {
 
