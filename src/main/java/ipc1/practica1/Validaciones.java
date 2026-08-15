@@ -37,4 +37,16 @@ public class Validaciones {
         return true;
     }
 
+    public boolean placaRepetida(String placa, String[][] placas) {
+        for (int fila = 1; fila <= 8; fila++) {
+            for (int columna = 1; columna <= 8; columna++) {
+                if (placas[fila][columna] != null && placas[fila][columna].equals(placa)) {
+                    System.out.println("La placa ya esta registrada.");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

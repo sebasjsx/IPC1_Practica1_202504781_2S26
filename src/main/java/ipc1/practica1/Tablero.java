@@ -86,6 +86,9 @@ public class Tablero {
         if (validaciones.validarFormatoPlaca(placa) == false) {
             return;
         }
+        if (validaciones.placaRepetida(placa, placas)) {
+            return;
+        }
         System.out.print("Ingrese la fila: ");
         int fila = entrada.nextInt();
         System.out.print("Ingrese la columna: ");
