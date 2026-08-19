@@ -38,7 +38,7 @@ public class Menu {
 
                 case 4 -> tablero.buscarVehiculo(entrada);
 
-                case 5 -> {}
+                case 5 -> tablero.mostrarRutaMasCorta();
 
                 case 6 -> tablero.mostrarIngresos();
 

@@ -18,6 +18,10 @@ public class Tablero {
     private Validaciones validaciones = new Validaciones();
     private double ingresos = 0;
     private int contadorVehiculos = 0;
+    private int filaEntrada;
+    private int columnaEntrada;
+    private int filaSalida;
+    private int columnaSalida;
 
     public void llenarTablero() {
         for (int fila = 0; fila < 10; fila++) {
@@ -73,7 +77,17 @@ public class Tablero {
             boolean esquina = (fila == 0 || fila == 9) && (columna == 0 || columna == 9);
 
             if (tablero[fila][columna].equals("=") && esquina == false) {
+
                 tablero[fila][columna] = letra;
+
+                if (letra.equals("E")) {
+                    filaEntrada = fila;
+                    columnaEntrada = columna;
+                } else {
+                    filaSalida = fila;
+                    columnaSalida = columna;
+                }
+
                 colocado = true;
             }
         }
@@ -183,6 +197,47 @@ public class Tablero {
             placas[fila][columna] = null;
 
             System.out.println("El vehiculo se retiro correctamente y se libero ese espacio");
+        }
+    }
+
+    private int obtenerPosicionBorde(int fila, int columna) {
+        if (fila == 0) {
+            return columna;
+        }
+        if (columna == 9) {
+            return 9 + fila;
+        }
+        if (fila == 9) {
+            return 27 - columna;
+        }
+        return 36 - fila;
+    }
+
+    public void mostrarRutaMasCorta() {
+        int posicionEntrada = obtenerPosicionBorde(filaEntrada, columnaEntrada);
+        int posicionSalida = obtenerPosicionBorde(filaSalida, columnaSalida);
+        int rutaHoraria;
+
+        if (posicionSalida >= posicionEntrada) {
+            rutaHoraria = posicionSalida - posicionEntrada;
+        } else {
+            rutaHoraria = 36 - posicionEntrada + posicionSalida;
+        }
+
+        int rutaAntihoraria = 36 - rutaHoraria;
+
+        System.out.println("\n===== RUTA MAS CORTA =====");
+        System.out.println("Entrada: fila " + (filaEntrada + 1) + ", columna " + (columnaEntrada + 1));
+        System.out.println("Salida: fila " + (filaSalida + 1) + ", columna " + (columnaSalida + 1));
+        System.out.println("Ruta en sentido horario: " + rutaHoraria + " posiciones");
+        System.out.println("Ruta en sentido antihorario: " + rutaAntihoraria + " posiciones");
+
+        if (rutaHoraria < rutaAntihoraria) {
+            System.out.println("Ruta recomendada: sentido horario.");
+        } else if (rutaAntihoraria < rutaHoraria) {
+            System.out.println("Ruta recomendada: sentido antihorario.");
+        } else {
+            System.out.println("Ambas rutas tienen la misma distancia.");
         }
     }
 }
