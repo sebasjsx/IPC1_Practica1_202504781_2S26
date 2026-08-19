@@ -14,7 +14,7 @@ public class Menu {
     public void mostrarMenu(Tablero tablero) {
 
         Scanner entrada = new Scanner(System.in);
-        int opcion;
+        int opcion = 0;
 
         do {
             System.out.println("===== SISTEMA DE ESTACIONAMIENTO =====");
@@ -27,7 +27,13 @@ public class Menu {
             System.out.println("7. Salir");
             System.out.print("Seleccione una opcion: ");
 
-            opcion = entrada.nextInt();
+            if (entrada.hasNextInt()) {
+                opcion = entrada.nextInt();
+            } else {
+                System.out.println("Entrada invalida. Debe ingresar un numero.");
+                entrada.next();
+                continue;
+            }
 
             switch (opcion) {
                 case 1 -> tablero.ingresarVehiculo(entrada);
