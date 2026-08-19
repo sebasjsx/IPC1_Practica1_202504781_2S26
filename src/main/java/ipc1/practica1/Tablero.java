@@ -94,7 +94,10 @@ public class Tablero {
     }
 
     public void ingresarVehiculo(Scanner entrada) {
-
+        if (estacionamientoLleno()) {
+            System.out.println("El estacionamiento esta lleno.");
+            return;
+        }
         System.out.print("Ingrese la placa: ");
         String placa = entrada.next();
         if (validaciones.validarFormatoPlaca(placa) == false) {
@@ -109,9 +112,8 @@ public class Tablero {
         int columna = entrada.nextInt();
 
         if (fila >= 1 && fila <= 8 && columna >= 1 && columna <= 8) {
-            realizarPago(entrada);
-
             if (tablero[fila][columna].equals("L")) {
+                realizarPago(entrada);
                 tablero[fila][columna] = "A";
                 placas[fila][columna] = placa;
                 System.out.println("Vehiculo ingresado correctamente!");
@@ -240,4 +242,26 @@ public class Tablero {
             System.out.println("Ambas rutas tienen la misma distancia.");
         }
     }
+
+    private boolean estacionamientoLleno() {
+        for (int fila = 1; fila <= 8; fila++) {
+            for (int columna = 1; columna <= 8; columna++) {
+                if (tablero[fila][columna].equals("L")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    /*
+    public void llenarEstacionamientoPrueba() {
+
+        for (int fila = 1; fila <= 8; fila++) {
+            for (int columna = 1; columna <= 8; columna++) {
+                tablero[fila][columna] = "A";
+            }
+        }
+    }
+    */
 }

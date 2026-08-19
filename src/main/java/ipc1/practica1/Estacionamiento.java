@@ -16,6 +16,7 @@ public class Estacionamiento {
 
         tablero.llenarTablero();
         tablero.colocarEntradaSalida();
+        //tablero.llenarEstacionamientoPrueba();
         menu.mostrarMenu(tablero);
     }
 }
