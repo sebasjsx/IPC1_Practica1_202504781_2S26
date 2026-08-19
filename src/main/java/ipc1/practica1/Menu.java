@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ipc1.practica1;
+
 import java.util.Scanner;
 
 /**
@@ -36,21 +37,41 @@ public class Menu {
             }
 
             switch (opcion) {
-                case 1 -> tablero.ingresarVehiculo(entrada);
+                case 1 -> {
+                    System.out.println("");
+                    System.out.println("===== INGRESAR VEHICULO =====");
+                    tablero.ingresarVehiculo(entrada);
+                }
+                case 2 -> {
+                    System.out.println("");
+                    System.out.println("===== RETIRAR VEHICULO =====");
+                    tablero.retirarVehiculo(entrada);
+                }
+                case 3 -> {
+                    System.out.println("");
+                    System.out.println("===== ESTACIONAMIENTO =====");
+                    tablero.mostrarTablero();
+                }
+                case 4 -> {
+                    System.out.println("");
+                    System.out.println("===== BUSCAR VEHICULO =====");
+                    tablero.buscarVehiculo(entrada);
+                }
+                case 5 -> {
+                    System.out.println("");
+                    System.out.println("===== RUTA MAS CORTA =====");
+                    tablero.mostrarRutaMasCorta();
+                }
+                case 6 -> {
+                    System.out.println("");
+                    System.out.println("=== INGRESOS ===");
+                    tablero.mostrarIngresos();
+                }
+                case 7 -> {
+                }
 
-                case 2 -> tablero.retirarVehiculo(entrada);
-
-                case 3 -> tablero.mostrarTablero();
-
-                case 4 -> tablero.buscarVehiculo(entrada);
-
-                case 5 -> tablero.mostrarRutaMasCorta();
-
-                case 6 -> tablero.mostrarIngresos();
-
-                case 7 -> {}
-
-                default -> System.out.println("Opcion incorrecta");
+                default ->
+                    System.out.println("Opcion incorrecta");
             }
 
         } while (opcion != 7);

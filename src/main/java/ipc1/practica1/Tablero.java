@@ -69,6 +69,7 @@ public class Tablero {
         }
         System.out.println("Espacios libres: " + espaciosLibres);
         System.out.println("Espacios ocupados: " + espaciosOcupados);
+        System.out.println("");
     }
 
     public void colocarEntradaSalida() {
@@ -107,7 +108,7 @@ public class Tablero {
 
     public void ingresarVehiculo(Scanner entrada) {
         if (estacionamientoLleno()) {
-            System.out.println("El estacionamiento esta lleno.");
+            System.out.println("ERROR: El estacionamiento esta lleno.");
             return;
         }
         System.out.print("Ingrese la placa: ");
@@ -130,12 +131,13 @@ public class Tablero {
                 placas[fila][columna] = placa;
                 System.out.println("Vehiculo ingresado correctamente!");
             } else {
-                System.out.println("El espacio ya esta ocupado");
+                System.out.println("ERROR: El espacio ya esta ocupado");
             }
 
         } else {
-            System.out.println("La fila y columna deben estar entre 1 y 8");
+            System.out.println("ERROR: La fila y columna deben estar entre 1 y 8");
         }
+        System.out.println("");
     }
 
     public void realizarPago(Scanner entrada) {
@@ -147,9 +149,9 @@ public class Tablero {
             monto = entrada.nextDouble();
 
             if (monto < 0) {
-                System.out.println("No se puede un monto negativo");
+                System.out.println("ERROR: No se puede un monto negativo");
             } else if (monto < 10) {
-                System.out.println("Monto insuficiente");
+                System.out.println("ERRO: Monto insuficiente");
             }
         } while (monto < 10);
         double cambio = monto - 10;
@@ -160,13 +162,12 @@ public class Tablero {
     }
 
     public void mostrarIngresos() {
-        System.out.println("=== INGRESOS ===");
         System.out.println("Vehiculos cobrados: " + contadorVehiculos);
         System.out.println("Ingresos totales: " + ingresos);
+        System.out.println("");
     }
 
     public int[] buscarVehiculo(Scanner entrada) {
-
         System.out.print("Ingrese la placa: ");
         String placa = entrada.next();
         if (validaciones.validarFormatoPlaca(placa) == false) {
@@ -187,18 +188,17 @@ public class Tablero {
                     System.out.println("Vehiculo con placa *" + placa + "* encontrado.");
                     System.out.println("Fila: " + fila);
                     System.out.println("Columna: " + columna);
-
+                    System.out.println("");
                     return posicion;
                 }
             }
         }
-
-        System.out.println("No se encontro un vehiculo con esa placa.");
+        System.out.println("ERROR: No se encontro un vehiculo con esa placa.");
+        System.out.println("");
         return null;
     }
 
     public void retirarVehiculo(Scanner entrada) {
-
         int[] posicion = buscarVehiculo(entrada);
 
         if (posicion != null) {
@@ -210,8 +210,9 @@ public class Tablero {
             tablero[fila][columna] = "L";
             placas[fila][columna] = null;
 
-            System.out.println("El vehiculo se retiro correctamente y se libero ese espacio");
+            System.out.println("El vehiculo se retiro correctamente y se libero ese espacio!");
         }
+        System.out.println("");
     }
 
     private int obtenerPosicionBorde(int fila, int columna) {
@@ -240,7 +241,6 @@ public class Tablero {
 
         int rutaAntihoraria = 36 - rutaHoraria;
 
-        System.out.println("\n===== RUTA MAS CORTA =====");
         System.out.println("Entrada: fila " + (filaEntrada + 1) + ", columna " + (columnaEntrada + 1));
         System.out.println("Salida: fila " + (filaSalida + 1) + ", columna " + (columnaSalida + 1));
         System.out.println("Ruta en sentido horario: " + rutaHoraria + " posiciones");
@@ -248,11 +248,13 @@ public class Tablero {
 
         if (rutaHoraria < rutaAntihoraria) {
             System.out.println("Ruta recomendada: sentido horario.");
+            
         } else if (rutaAntihoraria < rutaHoraria) {
             System.out.println("Ruta recomendada: sentido antihorario.");
         } else {
             System.out.println("Ambas rutas tienen la misma distancia.");
         }
+        System.out.println("");
     }
 
     private boolean estacionamientoLleno() {
