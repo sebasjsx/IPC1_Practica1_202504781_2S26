@@ -36,7 +36,9 @@ public class Tablero {
     }
 
     public void mostrarTablero() {
-
+        int espaciosLibres = 0;
+        int espaciosOcupados = 0;
+        
         System.out.print("    ");
         for (int columna = 1; columna <= 8; columna++) {
             System.out.print(columna + " ");
@@ -53,10 +55,20 @@ public class Tablero {
 
             for (int columna = 0; columna < 10; columna++) {
                 System.out.print(tablero[fila][columna] + " ");
+
+                if (fila >= 1 && fila <= 8 && columna >= 1 && columna <= 8) {
+                    if (tablero[fila][columna].equals("L")) {
+                        espaciosLibres++;
+                    } else if (tablero[fila][columna].equals("A")) {
+                        espaciosOcupados++;
+                    }
+                }
             }
 
             System.out.println();
         }
+        System.out.println("Espacios libres: " + espaciosLibres);
+        System.out.println("Espacios ocupados: " + espaciosOcupados);
     }
 
     public void colocarEntradaSalida() {
@@ -256,7 +268,6 @@ public class Tablero {
     
     /*
     public void llenarEstacionamientoPrueba() {
-
         for (int fila = 1; fila <= 8; fila++) {
             for (int columna = 1; columna <= 8; columna++) {
                 tablero[fila][columna] = "A";
