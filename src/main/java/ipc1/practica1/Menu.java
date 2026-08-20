@@ -73,7 +73,21 @@ public class Menu {
                 default ->
                     System.out.println("Opcion incorrecta");
             }
-
+            if (opcion != 7) {
+                pausar(entrada);
+                limpiarPantalla();
+            }
         } while (opcion != 7);
+    }
+
+    private void pausar(Scanner entrada) {
+        entrada.nextLine();
+        System.out.print("Presione Enter para continuar...");
+        entrada.nextLine();
+    }
+
+    private void limpiarPantalla() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
